@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import Sparkle
+// import Sparkle
 
 class AutoUpgardeManager: NSObject {
     static let shared = AutoUpgardeManager()
@@ -40,8 +40,6 @@ class AutoUpgardeManager: NSObject {
     // MARK: Public
 
     func setup() {
-        guard WebPortalManager.hasWebProtal == false, allowSelectChannel else { return }
-        SUUpdater.shared()?.delegate = self
     }
 
     func addChanelMenuItem(_ menu: inout NSMenu) {
@@ -69,16 +67,6 @@ extension AutoUpgardeManager {
         for (channel, menuItem) in menuItems {
             menuItem.state = channel == current ? .on : .off
         }
-    }
-}
-
-extension AutoUpgardeManager: SUUpdaterDelegate {
-    func feedURLString(for updater: SUUpdater) -> String? {
-        return current.urlString
-    }
-
-    func updaterWillRelaunchApplication(_ updater: SUUpdater) {
-        SystemProxyManager.shared.disableProxy(port: 0, socksPort: 0, forceDisable: true)
     }
 }
 
