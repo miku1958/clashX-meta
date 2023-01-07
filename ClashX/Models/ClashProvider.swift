@@ -46,4 +46,21 @@ class ClashProvider: Codable {
     let proxies: [ClashProxy]
     let type: ProviderType
     let vehicleType: ProviderVehicleType
+    let updatedAt: String?
+
+    let subscriptionInfo: ClashProviderSubInfo?
+}
+
+class ClashProviderSubInfo: Codable {
+    let upload: Int
+    let download: Int
+    let total: Int
+    let expire: Int
+
+    private enum CodingKeys: String, CodingKey {
+        case upload = "Upload",
+             download = "Download",
+             total = "Total",
+             expire = "Expire"
+    }
 }
