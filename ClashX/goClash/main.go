@@ -133,7 +133,7 @@ func parseDefaultConfigThenStart(checkPort, allowLan bool) (*config.Config, erro
 	if err != nil {
 		return nil, err
 	}
-	go route.Start(cfg.General.ExternalController, cfg.General.Secret)
+	go route.Start(cfg.General.ExternalController, cfg.General.ExternalControllerTLS, cfg.General.Secret,cfg.TLS.Certificate, cfg.TLS.PrivateKey)
 	executor.ApplyConfig(cfg, true)
 	return cfg, nil
 }

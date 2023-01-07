@@ -57,6 +57,13 @@ def write_to_info(version):
 
 
 def run():
+    print("start clone Clash.Meta")
+    os.system("rm -rf Clash.Meta")
+    os.system("git clone https://github.com/MetaCubeX/Clash.Meta")
+
+    print("start re-configure go")
+    os.system("go get")
+
     version = get_version()
     print("current clash version:", version)
     build_time = datetime.datetime.now().strftime("%Y-%m-%d-%H%M")
